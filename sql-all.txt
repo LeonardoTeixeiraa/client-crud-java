@@ -1,0 +1,67 @@
+CREATE TABLE fornecedor(
+	id_for serial,
+	nome_for character varying(50), 
+	cnpj_for character varying(15),
+	tel_for character varying(13),
+	data_cad_for date,
+	CONSTRAINT fornecedor_pkey PRIMARY KEY (id_for)
+);
+
+CREATE TABLE cliente
+(
+    id_cli serial,
+    nome_cli character varying(50) NOT NULL,
+    logradouro_cli character varying(50),
+    bairro_cli character varying(50),
+    cidade_cli character varying(50),
+    estado_cli character(2),
+    cep_cli character varying(10),
+    cpf_cli character varying(14),
+    rg_cli character varying(20),
+    numero_cli integer,
+    CONSTRAINT clientes_pkey PRIMARY KEY (id_cli),
+    CONSTRAINT clientes_cpf_cli_key UNIQUE (cpf_cli)
+);
+
+CREATE TABLE produto (
+    id_prod serial,
+    nome_prod character varying(50),
+    desc_prod character varying(50),
+    cod_bar_prod character varying(13),
+    p_custo_prod double precision,
+    p_venda_prod double precision,
+    id_for integer,
+    CONSTRAINT produto_pkey PRIMARY KEY (id_prod),
+    CONSTRAINT fornecedor_fk FOREIGN KEY (id_for) REFERENCES fornecedor (id_for)
+);
+
+create table venda (
+	id_vend serial,
+	data_vend date,
+	val_vend double precision,
+	id_cli integer,
+	constraint venda_pkey primary key (id_vend),
+	constraint venda_id_cli_fkey foreign key (id_cli) references cliente (id_cli)
+)
+
+create table produto_venda(
+	id_prod integer,
+	id_vend integer,
+	val_prod double precision,
+	qtd_prod integer,
+	constraint produto_venda_id_prod_fkey foreign key (id_prod) references produto (id_prod),
+	constraint produto_venda_id_vend_fkey foreign key (id_vend) references venda (id_vend)
+)
+
+
+create extension pgcrypto;
+
+create table funcionario(
+	id_fun serial primary key,
+	nome_fun varchar(50),
+	cpf_fun varchar(14) unique,
+	login_fun varchar(30) unique,
+	senha_fun varchar(50),
+	tipo_fun varchar(13)
+)
+
