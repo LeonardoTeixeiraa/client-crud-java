@@ -173,7 +173,7 @@ public class VendaVIEW extends javax.swing.JInternalFrame {
         pesquisa_nome_pro.setEnabled(a);
         btnPesquisarPro.setEnabled(a);
         jtl_consultar_pro.setEnabled(a);
-        btnProAdd.setEnabled(a);
+            btnProAdd.setEnabled(a);
         btnProRem.setEnabled(a);
         jtl_consultar_pro_selecionado.setEnabled(a);
         TotalVenda.setText("0.00");

@@ -9,16 +9,20 @@ import javax.swing.JOptionPane;
 import java.awt.Image;
 import java.awt.Graphics;
 import javax.swing.ImageIcon;
+import br.com.projeto_3.dto.FuncionarioDTO;
 
 public class PrincipalVIEW extends javax.swing.JFrame {
 
     /**
      * Creates new form PrincipalVIEW
      */
-    public PrincipalVIEW() {
+    public PrincipalVIEW(FuncionarioDTO funcionarioDTO) {
         initComponents();
         this.setSize(1280, 720);
         this.setLocationRelativeTo(null);
+        if(funcionarioDTO.getTipo_fun().equalsIgnoreCase("COMUM")){
+            itemMenuFuncionario.setVisible(false);
+        }
     }
 
     private void sair() {

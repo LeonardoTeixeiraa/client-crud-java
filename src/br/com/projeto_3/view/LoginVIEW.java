@@ -7,10 +7,11 @@ package br.com.projeto_3.view;
 import br.com.projeto_3.ctr.FuncionarioCTR;
 import br.com.projeto_3.dto.FuncionarioDTO;
 import java.awt.Dimension;
+import javax.swing.JOptionPane;
 
 /**
  *
- * @author Marcel
+ * @author Leonardo
  */
 public class LoginVIEW extends javax.swing.JFrame {
 
@@ -31,6 +32,35 @@ public class LoginVIEW extends javax.swing.JFrame {
         msgErro.setText("");
     }
     
+    private  void  logar(){
+        funcionarioDTO.setLogin_fun(login_fun.getText());
+        funcionarioDTO.setSenha_fun(String.valueOf(senha_fun.getPassword()));
+        funcionarioDTO.setTipo_fun(funcionarioCTR.logarFuncionario(funcionarioDTO));
+        if(funcionarioDTO.getTipo_fun().length() > 0){
+            this.dispose();
+            new PrincipalVIEW(funcionarioDTO).setVisible(true);
+        }else{
+            JOptionPane.showMessageDialog(null,"Login ou senha\nIncorreto!!!");
+        }
+        
+    }
+    
+    private boolean verificaPreenchimento(){
+        if(login_fun.getText().equalsIgnoreCase("")){
+            JOptionPane.showMessageDialog(null, "O campo Senha deve ser preenchido");
+            senha_fun.requestFocus();
+            return false;
+        }
+        else{
+            if(senha_fun.getPassword().length == 0){
+                JOptionPane.showMessageDialog(null, "O campo senha deve ser preenchido");
+                login_fun.requestFocus();
+                return false;
+            }else{
+                return false;
+            }
+        }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -155,7 +185,7 @@ public class LoginVIEW extends javax.swing.JFrame {
         if (tipo.equals("Administrador") || tipo.equals("Funcionario")) {
             msgErro.setText("Funcionario logado com sucesso!");
             this.dispose();
-            new PrincipalVIEW().setVisible(true);
+            new PrincipalVIEW(funcionarioDTO).setVisible(true);
         }
 
     }// GEN-LAST:event_btnLogarActionPerformed
