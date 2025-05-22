@@ -34,4 +34,24 @@ Este projeto é um sistema desktop completo de **Cadastro de Clientes, Fornecedo
 ```plaintext
 src/br/com/projeto_3/
 ├── view/           # Telas (Swing)
-├── dto/            # Objetos de Transferênci
+├── dto/            # Objetos de Transferência de Dados
+├── dao/            # Acesso ao banco de dados (JDBC)
+├── ctr/            # Lógica de negócio (Controller)
+└── rel/            # Arquivos de relatórios (.jasper)
+```
+## 🔒Credenciais de Acesso
+
+Usuário administrador padrão criado no banco:
+
+Login: admin
+Senha: ifsp123
+
+## 📊 Relatórios
+
+Os relatórios foram desenvolvidos com o iReport e integrados via JasperReports. Para funcionar:
+
+    As bibliotecas .jar necessárias estão na pasta /jars
+
+    Os arquivos .jasper estão na pasta /rel
+
+    Relatórios são gerados e exibidos com JasperViewer
