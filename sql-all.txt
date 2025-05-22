@@ -1,14 +1,18 @@
-CREATE TABLE IF NOT EXISTS fornecedor(
-	id_for serial,
-	nome_for character varying(50), 
-	cnpj_for character varying(15),
-	tel_for character varying(13),
-	data_cad_for date,
-	CONSTRAINT fornecedor_pkey PRIMARY KEY (id_for)
+-- Ativa extensão pgcrypto (para criptografar senhas com crypt())
+CREATE EXTENSION IF NOT EXISTS pgcrypto;
+
+-- Tabela fornecedor
+CREATE TABLE IF NOT EXISTS fornecedor (
+    id_for serial,
+    nome_for character varying(50), 
+    cnpj_for character varying(15),
+    tel_for character varying(13),
+    data_cad_for date,
+    CONSTRAINT fornecedor_pkey PRIMARY KEY (id_for)
 );
 
-CREATE TABLE IF NOT EXISTS cliente
-(
+-- Tabela cliente
+CREATE TABLE IF NOT EXISTS cliente (
     id_cli serial,
     nome_cli character varying(50) NOT NULL,
     logradouro_cli character varying(50),
@@ -23,6 +27,7 @@ CREATE TABLE IF NOT EXISTS cliente
     CONSTRAINT clientes_cpf_cli_key UNIQUE (cpf_cli)
 );
 
+-- Tabela produto
 CREATE TABLE IF NOT EXISTS produto (
     id_prod serial,
     nome_prod character varying(50),
@@ -35,33 +40,44 @@ CREATE TABLE IF NOT EXISTS produto (
     CONSTRAINT fornecedor_fk FOREIGN KEY (id_for) REFERENCES fornecedor (id_for)
 );
 
+-- Tabela venda
 CREATE TABLE IF NOT EXISTS venda (
-	id_vend serial,
-	data_vend date,
-	val_vend double precision,
-	id_cli integer,
-	constraint venda_pkey primary key (id_vend),
-	constraint venda_id_cli_fkey foreign key (id_cli) references cliente (id_cli)
+    id_vend serial,
+    data_vend date,
+    val_vend double precision,
+    id_cli integer,
+    CONSTRAINT venda_pkey PRIMARY KEY (id_vend),
+    CONSTRAINT venda_id_cli_fkey FOREIGN KEY (id_cli) REFERENCES cliente (id_cli)
 );
 
-CREATE TABLE IF NOT EXISTS produto_venda(
-	id_prod integer,
-	id_vend integer,
-	val_prod double precision,
-	qtd_prod integer,
-	constraint produto_venda_id_prod_fkey foreign key (id_prod) references produto (id_prod),
-	constraint produto_venda_id_vend_fkey foreign key (id_vend) references venda (id_vend)
+-- Tabela produto_venda
+CREATE TABLE IF NOT EXISTS produto_venda (
+    id_prod integer,
+    id_vend integer,
+    val_prod double precision,
+    qtd_prod integer,
+    CONSTRAINT produto_venda_id_prod_fkey FOREIGN KEY (id_prod) REFERENCES produto (id_prod),
+    CONSTRAINT produto_venda_id_vend_fkey FOREIGN KEY (id_vend) REFERENCES venda (id_vend)
 );
 
+-- Tabela funcionario
+CREATE TABLE IF NOT EXISTS funcionario (
+    id_fun serial PRIMARY KEY,
+    nome_fun varchar(50),
+    cpf_fun varchar(14) UNIQUE,
+    login_fun varchar(30) UNIQUE,
+    senha_fun varchar(100),
+    tipo_fun varchar(13)
+);
 
-CREATE EXTENSION IF NOT EXISTS pgcrypto;
-
-CREATE TABLE IF NOT EXISTS funcionario(
-	id_fun serial primary key,
-	nome_fun varchar(50),
-	cpf_fun varchar(14) unique,
-	login_fun varchar(30) unique,
-	senha_fun varchar(100),
-	tipo_fun varchar(13)
+-- Inserção de usuário administrador
+INSERT INTO funcionario (
+    nome_fun, cpf_fun, login_fun, senha_fun, tipo_fun
+) VALUES (
+    'Administrador do Sistema',
+    '000.000.000-00',
+    'admin',
+    crypt('ifsp123', gen_salt('bf', 8)),
+    'Administrador'
 );
 
