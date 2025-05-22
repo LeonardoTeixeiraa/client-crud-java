@@ -8,7 +8,7 @@ import java.util.Date;
 
 /**
  *
- * @author paulo
+ * @author Leonardo
  */
 public class FornecedorDTO {
     private String nome_for, cnpj_for, tel_for;

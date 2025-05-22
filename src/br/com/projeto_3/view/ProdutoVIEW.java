@@ -17,7 +17,7 @@ import java.text.SimpleDateFormat;
 
 /**
  *
- * @author paulo
+ * @author Leonardo
  */
 public class ProdutoVIEW extends javax.swing.JInternalFrame {
 

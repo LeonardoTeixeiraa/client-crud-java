@@ -16,7 +16,7 @@ import java.text.SimpleDateFormat;
 
 public class FornecedorVIEW extends javax.swing.JInternalFrame {
 
-    SimpleDateFormat data_format = new SimpleDateFormat("dd/MM/yyyy");
+    SimpleDateFormat dateFormat = new SimpleDateFormat("dd/mm/yyyy");
 
     FornecedorDTO fornecedorDTO = new FornecedorDTO(); // Cria um objeto fornecedorDTO
     FornecedorCTR fornecedorCTR = new FornecedorCTR(); // cria um objeto fornecedorCTR
@@ -58,7 +58,7 @@ public class FornecedorVIEW extends javax.swing.JInternalFrame {
             fornecedorDTO.setNome_for(nome_for.getText());
             fornecedorDTO.setCnpj_for(cnpj_for.getText());
             fornecedorDTO.setTel_for(tel_for.getText());
-            fornecedorDTO.setData_cad_for(data_format.parse(data_cad_for.getText()));
+            fornecedorDTO.setData_cad_for(dateFormat.parse(data_cad_for.getText()));
 
             JOptionPane.showMessageDialog(null,
                     fornecedorCTR.inserirFornecedor(fornecedorDTO)
@@ -76,7 +76,7 @@ public class FornecedorVIEW extends javax.swing.JInternalFrame {
             fornecedorDTO.setNome_for(nome_for.getText());
             fornecedorDTO.setCnpj_for(cnpj_for.getText());
             fornecedorDTO.setTel_for(tel_for.getText());
-            fornecedorDTO.setData_cad_for(data_format.parse(data_cad_for.getText()));
+            fornecedorDTO.setData_cad_for(dateFormat.parse(data_cad_for.getText()));
 
             JOptionPane.showMessageDialog(null,
                     fornecedorCTR.alterarFornecedor(fornecedorDTO)
@@ -181,8 +181,8 @@ public class FornecedorVIEW extends javax.swing.JInternalFrame {
                 liberaCampos(true);
             } // fecha if (rs.next)
         } // fecha try
-        catch (Exception e) {
-            System.out.println("Erro preencheCampos: " + e.getMessage());
+        catch (Exception ertab) {
+            System.out.println("Erro SQL: " + ertab);
         } finally {
             fornecedorCTR.CloseDB();
         }
@@ -204,7 +204,6 @@ public class FornecedorVIEW extends javax.swing.JInternalFrame {
         cnpj_for = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         tel_for = new javax.swing.JTextField();
-        data_cad_for = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         btnNovo = new javax.swing.JButton();
         btnSalvar = new javax.swing.JButton();
@@ -217,6 +216,7 @@ public class FornecedorVIEW extends javax.swing.JInternalFrame {
         btnPesquisar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jtl_consultar_fornecedor = new javax.swing.JTable();
+        data_cad_for = new javax.swing.JFormattedTextField();
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setText("Fornecedor");
@@ -296,6 +296,14 @@ public class FornecedorVIEW extends javax.swing.JInternalFrame {
         });
         jScrollPane1.setViewportView(jtl_consultar_fornecedor);
 
+        data_cad_for.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        data_cad_for.setText("/ /");
+        data_cad_for.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                data_cad_forActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -312,25 +320,26 @@ public class FornecedorVIEW extends javax.swing.JInternalFrame {
                     .addComponent(jLabel3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(nome_for, javax.swing.GroupLayout.PREFERRED_SIZE, 417, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(cnpj_for, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(tel_for, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(72, 72, 72)
-                            .addComponent(jLabel5)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(data_cad_for)))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnNovo)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(nome_for, javax.swing.GroupLayout.PREFERRED_SIZE, 417, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cnpj_for, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnNovo)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnSalvar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnCancelar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnExcluir)))
+                        .addGap(135, 135, 135)
+                        .addComponent(btnSair))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(tel_for, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(72, 72, 72)
+                        .addComponent(jLabel5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnSalvar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnCancelar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnExcluir)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnSair)))
+                        .addComponent(data_cad_for, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(35, 35, 35)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 376, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -372,8 +381,8 @@ public class FornecedorVIEW extends javax.swing.JInternalFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel4)
                             .addComponent(tel_for, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(data_cad_for, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel5))
+                            .addComponent(jLabel5)
+                            .addComponent(data_cad_for, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(110, 110, 110)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnNovo)
@@ -443,6 +452,10 @@ public class FornecedorVIEW extends javax.swing.JInternalFrame {
         this.dispose();
     }//GEN-LAST:event_btnSairActionPerformed
 
+    private void data_cad_forActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_data_cad_forActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_data_cad_forActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancelar;
@@ -452,7 +465,7 @@ public class FornecedorVIEW extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnSair;
     private javax.swing.JButton btnSalvar;
     private javax.swing.JTextField cnpj_for;
-    private javax.swing.JTextField data_cad_for;
+    private javax.swing.JFormattedTextField data_cad_for;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

@@ -1,11 +1,11 @@
 package br.com.projeto_3.dao;
 
 import java.sql.*;
-import java.text.SimpleDateFormat;
 
 import br.com.projeto_3.dto.FuncionarioDTO;
 
 public class FuncionarioDAO {
+
     private ResultSet rs = null;
     private Statement stmt = null;
 

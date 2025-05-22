@@ -3,18 +3,30 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Marcel/Documents/NetBeansProjects/Projeto_3_new/Projeto_3/src/br/com/projeto_3/dao/ConexaoDAO.java</file>
-            <file>file:/C:/Users/Marcel/Documents/NetBeansProjects/Projeto_3_new/Projeto_3/src/br/com/projeto_3/view/LoginVIEW.java</file>
-            <file>file:/C:/Users/Marcel/Documents/NetBeansProjects/Projeto_3_new/Projeto_3/src/br/com/projeto_3/view/FuncionarioVIEW.java</file>
-            <file>file:/C:/Users/Marcel/Documents/NetBeansProjects/Projeto_3_new/Projeto_3/src/br/com/projeto_3/dao/ProdutoDAO.java</file>
-            <file>file:/C:/Users/Marcel/Documents/NetBeansProjects/Projeto_3_new/Projeto_3/src/br/com/projeto_3/ctr/ClienteCTR.java</file>
-            <file>file:/C:/Users/Marcel/Documents/NetBeansProjects/Projeto_3_new/Projeto_3/src/br/com/projeto_3/ctr/FornecedorCTR.java</file>
-            <file>file:/C:/Users/Marcel/Documents/NetBeansProjects/Projeto_3_new/Projeto_3/src/br/com/projeto_3/ctr/VendaCTR.java</file>
-            <file>file:/C:/Users/Marcel/Documents/NetBeansProjects/Projeto_3_new/Projeto_3/src/br/com/projeto_3/dao/FornecedorDAO.java</file>
-            <file>file:/C:/Users/Marcel/Documents/NetBeansProjects/Projeto_3_new/Projeto_3/src/br/com/projeto_3/view/ClienteVIEW.java</file>
-            <file>file:/C:/Users/Marcel/Documents/NetBeansProjects/Projeto_3_new/Projeto_3/src/br/com/projeto_3/view/PrincipalVIEW.java</file>
-            <file>file:/C:/Users/Marcel/Documents/NetBeansProjects/Projeto_3_new/Projeto_3/src/br/com/projeto_3/ctr/ProdutoCTR.java</file>
-            <file>file:/C:/Users/Marcel/Documents/NetBeansProjects/Projeto_3_new/Projeto_3/src/br/com/projeto_3/dao/ClienteDAO.java</file>
+            <file>file:/home/leonardo-teixeira/Documents/projeto-teste-crud/projeto-java-swing/src/br/com/projeto_3/view/PrincipalVIEW.java</file>
+            <file>file:/home/leonardo-teixeira/Documents/projeto-teste-crud/projeto-java-swing/src/br/com/projeto_3/ctr/FuncionarioCTR.java</file>
+            <file>file:/home/leonardo-teixeira/Documents/projeto-teste-crud/projeto-java-swing/src/br/com/projeto_3/ctr/VendaCTR.java</file>
+            <file>file:/home/leonardo-teixeira/Documents/projeto-teste-crud/projeto-java-swing/src/br/com/projeto_3/dto/ProdutoDTO.java</file>
+            <file>file:/home/leonardo-teixeira/Documents/projeto-teste-crud/projeto-java-swing/src/br/com/projeto_3/view/VendaVIEW.java</file>
+            <file>file:/home/leonardo-teixeira/Documents/projeto-teste-crud/projeto-java-swing/src/br/com/projeto_3/ctr/FornecedorCTR.java</file>
+            <file>file:/home/leonardo-teixeira/Documents/projeto-teste-crud/projeto-java-swing/src/br/com/projeto_3/dao/FuncionarioDAO.java</file>
+            <file>file:/home/leonardo-teixeira/Documents/projeto-teste-crud/projeto-java-swing/src/br/com/projeto_3/dto/ClienteDTO.java</file>
+            <file>file:/home/leonardo-teixeira/Documents/projeto-teste-crud/projeto-java-swing/src/br/com/projeto_3/dto/FuncionarioDTO.java</file>
+            <file>file:/home/leonardo-teixeira/Documents/projeto-teste-crud/projeto-java-swing/src/br/com/projeto_3/view/FornecedorVIEW.java</file>
+            <file>file:/home/leonardo-teixeira/Documents/projeto-teste-crud/projeto-java-swing/src/br/com/projeto_3/dao/ProdutoDAO.java</file>
+            <file>file:/home/leonardo-teixeira/Documents/projeto-teste-crud/projeto-java-swing/src/br/com/projeto_3/dao/ClienteDAO.java</file>
+            <file>file:/home/leonardo-teixeira/Documents/projeto-teste-crud/projeto-java-swing/src/br/com/projeto_3/dao/VendaDAO.java</file>
+            <file>file:/home/leonardo-teixeira/Documents/projeto-teste-crud/projeto-java-swing/src/br/com/projeto_3/ctr/ProdutoCTR.java</file>
+            <file>file:/home/leonardo-teixeira/Documents/projeto-teste-crud/projeto-java-swing/src/br/com/projeto_3/view/LoginVIEW.java</file>
+            <file>file:/home/leonardo-teixeira/Documents/projeto-teste-crud/projeto-java-swing/src/br/com/projeto_3/ctr/ClienteCTR.java</file>
+            <file>file:/home/leonardo-teixeira/Documents/projeto-teste-crud/projeto-java-swing/src/br/com/projeto_3/dao/ConexaoDAO.java</file>
+            <file>file:/home/leonardo-teixeira/Documents/projeto-teste-crud/projeto-java-swing/src/br/com/projeto_3/dao/FornecedorDAO.java</file>
+            <file>file:/home/leonardo-teixeira/Documents/projeto-teste-crud/projeto-java-swing/src/br/com/projeto_3/view/ClienteVIEW.java</file>
+            <file>file:/home/leonardo-teixeira/Documents/projeto-teste-crud/projeto-java-swing/src/br/com/projeto_3/view/FuncionarioVIEW.java</file>
+            <file>file:/home/leonardo-teixeira/Documents/projeto-teste-crud/projeto-java-swing/src/br/com/projeto_3/dto/FornecedorDTO.java</file>
+            <file>file:/home/leonardo-teixeira/Documents/projeto-teste-crud/projeto-java-swing/src/br/com/projeto_3/dto/VendaDTO.java</file>
+            <file>file:/home/leonardo-teixeira/Documents/projeto-teste-crud/projeto-java-swing/src/br/com/projeto_3/view/ProdutoVIEW.java</file>
+            <file>file:/home/leonardo-teixeira/Documents/projeto-teste-crud/projeto-java-swing/src/br/com/projeto_3/ctr/RelatorioCTR.java</file>
         </group>
     </open-files>
 </project-private>

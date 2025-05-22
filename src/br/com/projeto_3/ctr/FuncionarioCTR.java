@@ -7,6 +7,7 @@ import br.com.projeto_3.dao.ConexaoDAO;
 import br.com.projeto_3.dto.FuncionarioDTO;
 
 public class FuncionarioCTR {
+
     FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
 
     public String inserirFuncionario(FuncionarioDTO funcionarioDTO) {
@@ -55,9 +56,7 @@ public class FuncionarioCTR {
             }
             return "Funcionario NÃO excluído!!!";
 
-        }
-
-        catch (Exception e) {
+        } catch (Exception e) {
             System.out.println(e.getMessage());
             return "Funcionario NÃO excluído!!!";
         }
@@ -68,9 +67,7 @@ public class FuncionarioCTR {
             String tipo = funcionarioDAO.loginFuncionario(funcionarioDTO);
 
             return tipo;
-        }
-
-        catch (Exception e) {
+        } catch (Exception e) {
             System.out.println(e.getMessage());
             return null;
         }

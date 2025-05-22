@@ -7,7 +7,7 @@ package br.com.projeto_3.dto;
 
 /**
  *
- * @author paulo
+ * @author Leonardo
  */
 public class ProdutoDTO {
     private String nome_prod, desc_prod, cod_bar_prod;

@@ -1,4 +1,4 @@
-CREATE TABLE fornecedor(
+CREATE TABLE IF NOT EXISTS fornecedor(
 	id_for serial,
 	nome_for character varying(50), 
 	cnpj_for character varying(15),
@@ -7,7 +7,7 @@ CREATE TABLE fornecedor(
 	CONSTRAINT fornecedor_pkey PRIMARY KEY (id_for)
 );
 
-CREATE TABLE cliente
+CREATE TABLE IF NOT EXISTS cliente
 (
     id_cli serial,
     nome_cli character varying(50) NOT NULL,
@@ -23,7 +23,7 @@ CREATE TABLE cliente
     CONSTRAINT clientes_cpf_cli_key UNIQUE (cpf_cli)
 );
 
-CREATE TABLE produto (
+CREATE TABLE IF NOT EXISTS produto (
     id_prod serial,
     nome_prod character varying(50),
     desc_prod character varying(50),
@@ -35,33 +35,33 @@ CREATE TABLE produto (
     CONSTRAINT fornecedor_fk FOREIGN KEY (id_for) REFERENCES fornecedor (id_for)
 );
 
-create table venda (
+CREATE TABLE IF NOT EXISTS venda (
 	id_vend serial,
 	data_vend date,
 	val_vend double precision,
 	id_cli integer,
 	constraint venda_pkey primary key (id_vend),
 	constraint venda_id_cli_fkey foreign key (id_cli) references cliente (id_cli)
-)
+);
 
-create table produto_venda(
+CREATE TABLE IF NOT EXISTS produto_venda(
 	id_prod integer,
 	id_vend integer,
 	val_prod double precision,
 	qtd_prod integer,
 	constraint produto_venda_id_prod_fkey foreign key (id_prod) references produto (id_prod),
 	constraint produto_venda_id_vend_fkey foreign key (id_vend) references venda (id_vend)
-)
+);
 
 
-create extension pgcrypto;
+CREATE EXTENSION IF NOT EXISTS pgcrypto;
 
-create table funcionario(
+CREATE TABLE IF NOT EXISTS funcionario(
 	id_fun serial primary key,
 	nome_fun varchar(50),
 	cpf_fun varchar(14) unique,
 	login_fun varchar(30) unique,
-	senha_fun varchar(50),
+	senha_fun varchar(100),
 	tipo_fun varchar(13)
-)
+);
 

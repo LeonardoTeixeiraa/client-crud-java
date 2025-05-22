@@ -7,7 +7,7 @@ package br.com.projeto_3.dto;
 
 /**
  *
- * @author paulo
+ * @author Leonardo
  */
 public class ClienteDTO {
     private String nome_cli, logradouro_cli, bairro_cli, cidade_cli;

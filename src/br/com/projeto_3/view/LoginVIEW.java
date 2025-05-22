@@ -32,18 +32,32 @@ public class LoginVIEW extends javax.swing.JFrame {
         msgErro.setText("");
     }
     
-    private  void  logar(){
-        funcionarioDTO.setLogin_fun(login_fun.getText());
-        funcionarioDTO.setSenha_fun(String.valueOf(senha_fun.getPassword()));
-        funcionarioDTO.setTipo_fun(funcionarioCTR.logarFuncionario(funcionarioDTO));
-        if(funcionarioDTO.getTipo_fun().length() > 0){
-            this.dispose();
-            new PrincipalVIEW(funcionarioDTO).setVisible(true);
-        }else{
-            JOptionPane.showMessageDialog(null,"Login ou senha\nIncorreto!!!");
-        }
-        
+//    private  void  logar(){
+//        funcionarioDTO.setLogin_fun(login_fun.getText());
+//        funcionarioDTO.setSenha_fun(String.valueOf(senha_fun.getPassword()));
+//        funcionarioDTO.setTipo_fun(funcionarioCTR.logarFuncionario(funcionarioDTO));
+//        if(funcionarioDTO.getTipo_fun().length() > 0){
+//            this.dispose();
+//            new PrincipalVIEW(funcionarioDTO).setVisible(true);
+//        }else{
+//            JOptionPane.showMessageDialog(null,"Login ou senha\nIncorreto!!!");
+//        }
+//        
+//    }
+    private void logar() {
+    funcionarioDTO.setLogin_fun(login_fun.getText());
+    funcionarioDTO.setSenha_fun(String.valueOf(senha_fun.getPassword()));
+    
+    String tipo = funcionarioCTR.logarFuncionario(funcionarioDTO);
+    funcionarioDTO.setTipo_fun(tipo);
+
+    if (tipo != null && !tipo.isEmpty()) {
+        this.dispose();
+        new PrincipalVIEW(funcionarioDTO).setVisible(true);
+    } else {
+        JOptionPane.showMessageDialog(null, "Login ou senha\nIncorrreto!!!");
     }
+}
     
     private boolean verificaPreenchimento(){
         if(login_fun.getText().equalsIgnoreCase("")){
@@ -177,12 +191,14 @@ public class LoginVIEW extends javax.swing.JFrame {
         funcionarioDTO.setSenha_fun(new String(senha_fun.getPassword()));
 
         String tipo = funcionarioCTR.logarFuncionario(funcionarioDTO);
-
+        
         if (tipo == null) {
             msgErro.setText("Dados incorretos, verifique e tente novamente!");
+            return;
         }
 
         if (tipo.equals("Administrador") || tipo.equals("Funcionario")) {
+            funcionarioDTO.setTipo_fun(tipo);
             msgErro.setText("Funcionario logado com sucesso!");
             this.dispose();
             new PrincipalVIEW(funcionarioDTO).setVisible(true);
