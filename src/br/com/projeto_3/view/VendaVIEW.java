@@ -84,7 +84,7 @@ public class VendaVIEW extends javax.swing.JInternalFrame {
             while (rs.next()) {
                 modelo_jtl_consultar_cli.addRow(new Object[]{
                     rs.getString("id_cli"),
-                    rs.getString("nome")
+                    rs.getString("nome_cli")
                 });
             }
         } catch (Exception erTab) {
@@ -417,7 +417,7 @@ public class VendaVIEW extends javax.swing.JInternalFrame {
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, true, false
+                false, false, true, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {

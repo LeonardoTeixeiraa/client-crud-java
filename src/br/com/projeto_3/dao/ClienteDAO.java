@@ -27,8 +27,8 @@ public class ClienteDAO {
             stmt = ConexaoDAO.con.createStatement();
 
             //Comando SQL que sera executado no banco de dados
-            String comando = "Insert into cliente (nome, logradouro, numero, "
-                    + "bairro, cidade, estado, cep, cpf, rg) values ( "
+            String comando = "Insert into cliente (nome_cli, logradouro_cli, numero_cli, "
+                    + "bairro_cli, cidade_cli, estado_cli, cep_cli, cpf_cli, rg_cli) values ( "
                     + "'" + clienteDTO.getNome_cli() + "', "
                     + "'" + clienteDTO.getLogradouro_cli() + "', "
                     + clienteDTO.getNumero_cli() + ", "
@@ -45,11 +45,13 @@ public class ClienteDAO {
             ConexaoDAO.con.commit();
 //fecha o statement
             stmt.close();
+            System.out.println("Cliente Inserido!");
             return true;
 
         }//Caso tenha algum erro no código acima é enviado uma mensagem no Console com o que está ocorrendo
         catch (Exception e) {
             System.out.println(e.getMessage());
+            System.out.println("Cliente Não  Inserido!");
             return false;
         }//Independente de dar erro ou não ele vai fechar o banco de dados.
         finally {
@@ -71,8 +73,8 @@ public class ClienteDAO {
                 case 1:
                     comando = "Select c.* "
                             + "from cliente c "
-                            + "where nome like '" + clienteDTO.getNome_cli() + "%' "
-                            + "order by c.nome";
+                            + "where nome_cli like '" + clienteDTO.getNome_cli() + "%' "
+                            + "order by c.nome_cli";
                     break;
                 case 2:
                     comando = "Select c.* "
@@ -80,16 +82,18 @@ public class ClienteDAO {
                             + "where c.id_cli = " + clienteDTO.getId_cli();
                     break;
                 case 3:
-                    comando = "Select c.id_cli, c.nome "
+                    comando = "Select c.id_cli, c.nome_cli "
                             + "from cliente c ";
                     break;
             }
             //Executa o comando SQL no banco de dados
             rs = stmt.executeQuery(comando.toUpperCase());
+            System.out.println("Cliente Consultado");
             return rs;
         }//Caso tenha algum erro no codigo acima é enviado uma mensagem no console com o que ocorreu
         catch (Exception e) {
             System.out.println(e.getMessage());
+            System.out.println("Cliente Não Consultado");
             return rs;
         }
     }//Fecha consultarCliente;
@@ -101,15 +105,15 @@ public class ClienteDAO {
             //Cria o Statement que responsável por executar alguma coisa no banco de dados
             stmt = ConexaoDAO.con.createStatement();
             String comando = "Update cliente set "
-                    + "nome = '" + clienteDTO.getNome_cli() + "', "
-                    + "logradouro = '" + clienteDTO.getLogradouro_cli() + "', "
-                    + "numero = " + clienteDTO.getNumero_cli() + ", "
-                    + "bairro = '" + clienteDTO.getBairro_cli() + "', "
-                    + "cidade = '" + clienteDTO.getCidade_cli() + "', "
-                    + "estado = '" + clienteDTO.getEstado_cli() + "', "
-                    + "cep = '" + clienteDTO.getCep_cli() + "', "
-                    + "cpf = '" + clienteDTO.getCpf_cli() + "', "
-                    + "rg = '" + clienteDTO.getRg_cli() + "' "
+                    + "nome_cli = '" + clienteDTO.getNome_cli() + "', "
+                    + "logradouro_cli = '" + clienteDTO.getLogradouro_cli() + "', "
+                    + "numero_cli = " + clienteDTO.getNumero_cli() + ", "
+                    + "bairro_cli = '" + clienteDTO.getBairro_cli() + "', "
+                    + "cidade_cli = '" + clienteDTO.getCidade_cli() + "', "
+                    + "estado_cli = '" + clienteDTO.getEstado_cli() + "', "
+                    + "cep_cli = '" + clienteDTO.getCep_cli() + "', "
+                    + "cpf_cli = '" + clienteDTO.getCpf_cli() + "', "
+                    + "rg_cli = '" + clienteDTO.getRg_cli() + "' "
                     + "where id_cli = " + clienteDTO.getId_cli();
 
             // Executa o comando SQL no banco de Dados  

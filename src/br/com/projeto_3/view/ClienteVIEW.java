@@ -460,10 +460,10 @@ public class ClienteVIEW extends javax.swing.JInternalFrame {
             while (rs.next()) {
                 modelo_jtl_consultar_cliente.addRow(new Object[]{
                     rs.getString("id_cli"),
-                    rs.getString("nome"),});
+                    rs.getString("nome_cli"),});
             }
-        } catch (Exception erTab) {
-            System.out.println("Erro SQL: " + erTab);
+        } catch (Exception e) {
+            System.out.println("Erro preencheTabela: " + e.getMessage());
         } finally {
             clienteCTR.CloseDB();
         }

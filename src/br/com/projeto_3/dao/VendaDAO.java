@@ -44,7 +44,7 @@ public class VendaDAO {
             //Cria o Statement que responsavel por executar alguma coisa no banco de dados
             stmt = ConexaoDAO.con.createStatement();
             stmt1 = ConexaoDAO.con.createStatement();
-            String comando1 = "Insert into Venda (dat_vend, val_vend, "
+            String comando1 = "Insert into Venda (data_vend, val_vend, "
                     + "id_cli) values ("
                     + "to_date('" + date.format(vendaDTO.getDat_vend()) + "', 'DD/MM/YYYY'), "
                     + vendaDTO.getVal_vend() + ", "
